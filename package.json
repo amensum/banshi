@@ -10,11 +10,9 @@
   "homepage": "https://github.com/amensum/banshi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/amensum/banshi.git"
+    "url": "git+https://github.com/amensum/banshi.git"
   },
-  "bugs": {
-    "url": "https://github.com/amensum/banshi/issues"
-  },
+  "bugs": "https://github.com/amensum/banshi/issues",
   "license": "MIT",
   "scripts": {
     "build:source": "tsc && tsc-alias && esbuild dist/**.js --minify --allow-overwrite --outdir=dist",
