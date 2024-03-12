@@ -17,28 +17,28 @@ npm install banshi
 Integration example:
 
 ```typescript
+class MockEndpoint<P = any, D = any> {
+  constructor(private onRequest: (payload: P) => Promise<D>) { }
+
+  async sendRequest(payload: P) {
+    const data = await this.onRequest(payload);
+
+    console.log(`Request payload: ${JSON.stringify(payload)}`); // Request payload: ["getBrand",[]]
+    console.log(`Request data: ${JSON.stringify(data)}`); // Request data: "Tesla"
+
+    return data;
+  }
+}
+
+class Car {
+  constructor(private brand: string) { }
+
+  getBrand() {
+    return this.brand;
+  }
+}
+
 const run = async () => {
-  class MockEndpoint<P = any, D = any> {
-    constructor(private onRequest: (payload: P) => Promise<D>) { }
-
-    async sendRequest(payload: P) {
-      const data = await this.onRequest(payload);
-
-      console.log(`Request payload: ${JSON.stringify(payload)}`);
-      console.log(`Request data: ${JSON.stringify(data)}`);
-
-      return data;
-    }
-  }
-
-  class Car {
-    constructor(private brand: string) { }
-
-    getBrand() {
-      return this.brand;
-    }
-  }
-
   const car = new Car("Tesla");
 
   const resourceRemote = new BanshiResource<Car>(car);
@@ -55,8 +55,8 @@ const run = async () => {
     return resource.getBrand();
   });
 
-  console.log(result);
+  console.log(`Result: ${result}`);
 };
 
-run();
+run(); // Result: Tesla
 ```
