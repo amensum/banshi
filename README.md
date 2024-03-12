@@ -57,8 +57,8 @@ const run = async () => {
     return resource.getBrand();
   });
 
-  console.log(`Result: ${result}`);
+  console.log(`Result: ${result}`); // Result: Tesla
 };
 
-run(); // Result: Tesla
+run();
 ```
