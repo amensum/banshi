@@ -17,6 +17,8 @@ npm install banshi
 Integration example:
 
 ```typescript
+import { BanshiResource, BanshiConnected } from "banshi";
+
 class MockEndpoint<P = any, D = any> {
   constructor(private onRequest: (payload: P) => Promise<D>) { }
 
