@@ -15,6 +15,8 @@ npm install banshi
 
 ## Getting started
 
+Integration example:
+
 ```typescript
 const run = async () => {
   class MockEndpoint<P = any, D = any> {
